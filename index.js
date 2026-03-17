@@ -26,9 +26,9 @@ async function getToken(url) {
   });
 
   await page.goto(url, { waitUntil: "networkidle2" });
-  await page.waitForTimeout(3000);
-
+  await new Promise(resolve => setTimeout(resolve, 5000));
   const jsToken = await page.evaluate(() => window.jsToken || null);
+
 
   await browser.close();
 
